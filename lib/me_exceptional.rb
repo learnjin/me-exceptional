@@ -1,0 +1,3 @@
+module MeExceptional
+  # Your code goes here...
+end
