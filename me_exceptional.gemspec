@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "me_exceptional"
   s.version     = MeExceptional::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["Kai Rubarth"]
+  s.email       = ["kai@doxter.de"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{notifies you of exceptions by email}
+  s.description = %q{The gem catches exceptions and creates and sends emails with backtrace and other informations.}
 
   s.rubyforge_project = "me_exceptional"
 
@@ -18,4 +18,10 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+
+  s.add_dependency('rails')
+  s.add_dependency('geokit')
+
 end
+
+
