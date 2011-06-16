@@ -1,0 +1,37 @@
+
+
+= MeExceptional 
+
+The Gem notifies you of application exceptions by email and adds some
+useful information about the request and the client issuing the request. 
+It is heavily inspired by the exceptional gem and takes some of it design
+for the HTML email.
+
+
+== Installation
+
+Install the gem in your Rails 3 App as usual:
+
+    gem install me_exceptional
+
+Add installation run the generator 
+
+    rails generate me_exceptional:install
+
+The generator will create an initializer which you MUST take a look at
+and configure.
+
+
+Support for Rails 2.x is not provided so far.
+
+
+== Getting Started
+
+So far there's nothing much more to it. In your production environment you
+will get emails for controller exceptions.
+
+=== Configuring views
+
+Coming Soon. 
+
+
