@@ -1,0 +1,53 @@
+
+<p style="font-size:12px"><b>Message</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%= @message %>
+</p>
+
+<p style="font-size:12px"><b>Time</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%= @params[:timestamp] %>
+</p>
+
+<p style="font-size:12px"><b>URL</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%= @params[:method] %> <%= @params[:url] %>
+</p>
+
+<p style="font-size:12px"><b>Params</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%= @params[:params] %>
+</p>
+
+<p style="font-size:12px"><b>User Agent</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%= @params[:user_agent] %>
+</p>
+
+<p style="font-size:12px"><b>Client IP</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%= @params[:client_ip] %> (<%= @hostname %>)
+</p>
+
+<p style="font-size:12px"><b>Address</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%= @loc.full_address %>
+</p>
+
+<p style="font-size:12px"><b>Location</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%- query = CGI::escape([@loc.lat, @loc.lng].join(','))%>
+http://maps.google.com/maps?q=<%= query %>
+</p>
+
+<p style="font-size:12px"><b>Complete Backtrace</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%= @params[:backtrace] %>
+</p>
+
+<p style="font-size:12px"><b>Complete Request Object</b></p>
+<p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
+<%= @params[:request_env] %> 
+</p>
+
+
