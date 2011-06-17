@@ -1,5 +1,4 @@
 
-
 = MeExceptional 
 
 The Gem notifies you of application exceptions by email and adds some
@@ -14,7 +13,7 @@ Install the gem in your Rails 3 App as usual:
 
     gem install me_exceptional
 
-Add installation run the generator 
+After you have installed MeExceptional and added it to your Gemfile, run the generator.
 
     rails generate me_exceptional:install
 
@@ -22,16 +21,44 @@ The generator will create an initializer which you MUST take a look at
 and configure.
 
 
-Support for Rails 2.x is not provided so far.
+NOTE: Support for Rails 2.x is not provided so far.
 
 
 == Getting Started
 
-So far there's nothing much more to it. In your production environment you
-will get emails for controller exceptions.
+Being an engine MeExceptional has mailer and views already set up for
+you to get started; if your app raises an exception production mode you
+will get notified by email (note: doesn't work for routing errors so far
+because of a bug in rails). You may, however change view and mailer to
+suit you better.
 
 === Configuring views
 
-Coming Soon. 
+If you want to change the email, you just need to invoke the generator 
+that copies it over to your application:
+
+     rails generate me_exceptional:views
+
+This copies the mailer views to "/app/views/me_exceptional". 
+
+
+=== Configuring mailer
+
+In case you also want to customize the mailer, invoke the mailer generator:
+
+     rails generate me_exceptional:mailer
+
+This creates the directory "/app/mailers/me_exceptional" with the mailer contained.
+
+
+== Outlook
+
+* more gem side configuration options
+* asynchronous mailing options
+* routing errors and other errors 
+
+
+
+
 
 

@@ -1,4 +1,16 @@
+===============================================================================
 
-= README for MeExceptional
+Some setup you must do manually if you haven't yet:
+
+  1. Be sure you have a working ActionMailer configuration
+
+  2. Ensure you have set up sender and receiver of the exception mails:
+
+       config.mailer_from = "please-change-me@example.com"
+       config.mailer_to   = "please-change-me@example.com"
+
+===============================================================================
+
+
 
 
