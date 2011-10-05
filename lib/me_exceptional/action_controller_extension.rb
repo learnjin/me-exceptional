@@ -17,7 +17,7 @@ module ActionController
                             :params => params.inspect.to_s,
                             :user_agent => request.user_agent,
                             #:client_ip => request.remote_ip,
-                            :client_ip => request.env["HTTP_X_FORWARDED_FOR"],
+                            :client_ip => request.env["HTTP_X_FORWARDED_FOR"].split(',').first,
                             :request_env => request.env.inspect.to_s).deliver
 
       end
