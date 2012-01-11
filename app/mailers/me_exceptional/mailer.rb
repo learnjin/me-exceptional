@@ -7,6 +7,12 @@ class MeExceptional::Mailer < ::ActionMailer::Base
     mail(:from => MeExceptional.mailer_from, :to => MeExceptional.mailer_to, :subject => message)
   end
 
+  def error_mail(message, params)
+    @message, @params = message, params
+    subject = "Exception! #{message}"
+    mail(:from => MeExceptional.mailer_from, :to => MeExceptional.mailer_to, :subject => subject)
+  end
+
   private
 
   def get_hostname(ip)

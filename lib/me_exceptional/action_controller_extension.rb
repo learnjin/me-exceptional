@@ -9,7 +9,7 @@ module ActionController
     def exception_catcher(e)
        if Rails.env == 'production' 
         # blocking to be sure this gets send!
-        Emailer.exceptional(e.message,
+        MeExceptional::Mailer.exceptional(e.message,
                             :backtrace => e.backtrace.join("\n"),
                             :timestamp => Time.zone.now,
                             :method => request.method,
