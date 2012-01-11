@@ -51,6 +51,31 @@ In case you also want to customize the mailer, invoke the mailer generator:
 This creates the directory "/app/mailers/me_exceptional" with the mailer contained.
 
 
+== Usage outside of ActionController
+
+To use MeExceptional outside ActionController, i.e. in delayed jobs, you must include
+the BasicExtension and specifiy the methods you want to catch exceptions from in the
+class definition.
+
+
+    class Dummy
+       include MeExceptional::BasicExtension
+
+       def some_error
+         raise "some error"
+       end
+
+       def another_error
+         raise "some error"
+       end
+
+        rescue_mail_from_methods :some_error, :another_error
+     end
+
+Remember to put the call to rescue_mail_from_methods after the method definitions because
+the methods will be aliased.
+
+
 == Outlook
 
 * more gem side configuration options
