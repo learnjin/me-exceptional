@@ -1,4 +1,6 @@
-class MeExceptional::Mailer < ::ActionMailer::Base 
+class MeExceptional::Mailer < ActionMailer::Base 
+
+  default :from => MeExceptional.mailer_from
 
   def exceptional(message, params)
     @message, @params = message, params
@@ -9,7 +11,7 @@ class MeExceptional::Mailer < ::ActionMailer::Base
 
   def error_mail(message, params)
     @message, @params = message, params
-    subject = "Exception! #{message}"
+    subject = "[EXCEPTION] #{message}"
     mail(:from => MeExceptional.mailer_from, :to => MeExceptional.mailer_to, :subject => subject)
   end
 

@@ -4,30 +4,30 @@ module MeExceptional
   module BasicExtension
 
     def exception_catcher(e)
-      if Rails.env == 'production' 
 
-        m = MeExceptional::Mailer.error_mail(e.message,
-                                             :backtrace => e.backtrace.join("\n"),
-                                             :timestamp => Time.zone.now)
+      message = "#{e.class}: #{e.message}"
+      content = {:backtrace => e.backtrace.join("\n"), :timestamp => Time.zone.now}
 
-        # blocking on purpose to be sure this gets sent!
-        m.deliver
+      m = MeExceptional::Mailer.error_mail(message, content) 
+      m.deliver
 
-      end
-      raise e
+      Rails.logger.error "[EXCEPTION] #{e.class}: #{e.message}"
     end
 
     module ClassMethods
+
       def rescue_mail_from_methods(*methods)
 
         methods.each do |method|
           class_eval <<-EOF
-            def #{method}_rescuable
-              method
+            alias_method :#{method}_non_rescuable, :#{method}
+
+            def #{method}(*args)
+              #{method}_non_rescuable(*args)
             rescue Exception => e
-              rescue_with_handler(e)
+              exception_catcher(e)
+              #rescue_with_handler(e)
             end
-            alias_method :#{method}, :#{method}_rescuable
           EOF
         end
 
@@ -36,16 +36,11 @@ module MeExceptional
 
     def self.included(base)
       base.extend(ClassMethods)
-
-      base.instance_eval <<-EOF
-        include ActiveSupport::Rescuable
-        rescue_from Exception, :with => :exception_catcher
-      EOF
-
     end
 
   end
 
 end
+
 
 

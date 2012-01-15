@@ -9,7 +9,7 @@ module MeExceptional
   mattr_accessor :mailer_to
   @@mailer_to = nil
 
-  mattr_accessor :app_root
+  #mattr_accessor :app_root
 
   def self.setup
     yield self
