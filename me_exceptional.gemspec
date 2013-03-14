@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('activesupport')
   s.add_dependency('rails')
-  s.add_dependency('geokit')
+  s.add_dependency('geocoder')
 
 end
 

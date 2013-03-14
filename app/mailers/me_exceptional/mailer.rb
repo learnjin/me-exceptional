@@ -23,7 +23,7 @@ class MeExceptional::Mailer < ActionMailer::Base
   end 
 
   def geocode_ip(ip)
-    GeoKit::Geocoders::MultiGeocoder.geocode(ip)
+    Geocoder.address(ip)
   end
 
 
