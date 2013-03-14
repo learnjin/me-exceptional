@@ -31,12 +31,12 @@
 
 <p style="font-size:12px"><b>Address</b></p>
 <p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
-<%= @loc.full_address %>
+<%= @loc.address %>
 </p>
 
 <p style="font-size:12px"><b>Location</b></p>
 <p style="font-size:11px;font-family:Monaco,'Andale Mono',Consolas,'Courier New',monospace">
-<%- query = CGI::escape([@loc.lat, @loc.lng].join(','))%>
+<%- query = CGI::escape([@loc.latitude, @loc.longitude].join(','))%>
 http://maps.google.com/maps?q=<%= query %>
 </p>
 

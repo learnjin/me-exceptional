@@ -23,7 +23,7 @@ class MeExceptional::Mailer < ActionMailer::Base
   end 
 
   def geocode_ip(ip)
-    Geocoder.address(ip)
+    Geocoder.search(ip)
   end
 
 
