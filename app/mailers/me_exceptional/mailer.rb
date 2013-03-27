@@ -5,7 +5,7 @@ class MeExceptional::Mailer < ActionMailer::Base
   def exceptional(message, params)
     @message, @params = message, params
     @hostname = get_hostname(params[:client_ip])
-    @loc = geocode_ip(params[:client_ip])
+    @loc = geocode_ip(params[:client_ip])[0]
     mail(:from => MeExceptional.mailer_from, :to => MeExceptional.mailer_to, :subject => message)
   end
 
